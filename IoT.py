@@ -5,7 +5,6 @@ import ssl
 import datetime
 import os
 
-
 # Generera ett unikt id för varje session och hämta nuvarande arbetssökväg
 now = datetime.datetime.now()
 
@@ -14,9 +13,10 @@ MQTT_BROKER = "localhost"  # Använd localhost som värd
 MQTT_PORT = 8883
 MQTT_TOPIC = "sensor/virtual"
 
-CA_CERT = "C:\\Users\\moham\\IoTProject\\certs\\ca.crt"
-CLIENT_CERT = "C:\\Users\\moham\\IoTProject\\certs\\client.crt"
-CLIENT_KEY = "C:\\Users\\moham\\IoTProject\\certs\\client.key"
+# Certifikatens sökvägar (anpassade för sekretess)
+CA_CERT = "directory_to/ca.crt"
+CLIENT_CERT = "directory_to/client.crt"
+CLIENT_KEY = "directory_to/client.key"
 
 # Kontrollera att certifikatfilerna existerar
 for cert_path in [CA_CERT, CLIENT_CERT, CLIENT_KEY]:
@@ -45,7 +45,7 @@ client.connect(MQTT_BROKER, MQTT_PORT, 60)
 client.loop_start()  # Starta loop för händelser
 
 try:
-  while True:
+    while True:
         # Kolla batterinivån på datorn
         battery = psutil.sensors_battery()
         if battery:
