@@ -63,7 +63,7 @@ Ensure these files are placed in a secure directory and update the paths in the 
 
 2. Run the virtual sensor script:
    ```bash
-   python mqtt_virtual_sensor.py
+   python IoT.py
    ```
 
 3. View the logs to confirm the sensor is publishing messages:
@@ -74,9 +74,12 @@ Ensure these files are placed in a secure directory and update the paths in the 
 ## Project Structure
 ```
 IoTProject
-├── mqtt_virtual_sensor.py      # Main script for the virtual sensor
+├── IoT.py                      # Main script for the virtual sensor
+├── config/                     # Directory containing Mosquitto configuration
+│   └── mosquitto.config        # Configuration file for Mosquitto broker
+├── log/                        # Directory for SSL key logs
+├── certs/                      # Directory for storing certificates (not included, used for mTLS setup)
 ├── README.md                   # Project documentation (this file)
-└── certs/                      # Directory for storing certificates (not included)
 ```
 
 ## Future Improvements
