@@ -24,7 +24,7 @@ The virtual sensor reads the current battery level of the host machine and sends
 ## Requirements
 ### Software
 - Python 3.8 or later
-- Required Python libraries:
+- Required Python libraries (listed in `requirements.txt`):
   - `paho-mqtt`
   - `psutil`
 
@@ -48,7 +48,7 @@ Ensure these files are placed in a secure directory and update the paths in the 
 
 2. Install the required Python libraries:
    ```bash
-   pip install paho-mqtt psutil
+   pip install -r requirements.txt
    ```
 
 3. Update the certificate paths in the script to point to your local certificate files:
@@ -58,8 +58,13 @@ Ensure these files are placed in a secure directory and update the paths in the 
    CLIENT_KEY = "path_to/client.key"
    ```
 
+4. Start the MQTT broker using Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
 ## Usage
-1. Start the MQTT broker (if not already running).
+1. Ensure the MQTT broker is running.
 
 2. Run the virtual sensor script:
    ```bash
@@ -79,6 +84,8 @@ IoTProject
 │   └── mosquitto.config        # Configuration file for Mosquitto broker
 ├── log/                        # Directory for SSL key logs
 ├── certs/                      # Directory for storing certificates (not included, used for mTLS setup)
+├── docker-compose.yml          # Docker Compose file to set up MQTT broker
+├── requirements.txt            # Python dependencies
 ├── README.md                   # Project documentation (this file)
 ```
 
